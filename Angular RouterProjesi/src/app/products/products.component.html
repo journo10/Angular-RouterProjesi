@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-bordered">
+      <tr *ngFor="let p of products">
+        <td>{{ p.id }}</td> 
+        <td class="w-75" >{{ p.name }}</td> 
+        <td>
+        <a [routerLink]="['/products', p.id]" class="btn btn-outline-primary me-2 " >detaylar</a>
+        <a [routerLink]="['/products', p.id,'edit']" class="btn btn-outline-primary " >edit</a>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <a
+      routerLink="/products"
+      [queryParams]="{ page: 1, order: 'bestselling' }"
+      class="btn btn-primary me-2">En Çok Satanlar</a>
+
+    <a
+      routerLink="/products"
+      [queryParams]="{ page: 1, order: 'newest' }"
+      class="btn btn-primary me-2">En Yeni Ürünler</a>
+
+    <button (click)="loadProducts2()" class="btn btn-primary me-2">
+      Sayfayı Yenile2
+    </button>
+
+    <a class="btn btn-primary me-2" routerLink="products">Products</a>
+    <button (click)="loadProducts1()" class="btn btn-primary">
+      Sayfayı Yenile
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <router-outlet></router-outlet>
+  </div>
+</div>
